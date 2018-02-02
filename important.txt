@@ -25,3 +25,21 @@ Q) Explain the relation between node and express?
 ================================================================================
 10) Generating Express Apps
 ================================================================================
+
+Q) What is index.js file?
+    Traditionally, starting point of a node project is index.js file.
+    You can use any file name for starting point of node project. But tradition-
+    ally it is index.js file.
+
+Q) Module system in express?
+    Node at this point supports COMMONJS type of module system.
+    Module system is used to import or make use of already existing code.
+    Your code is divided up into multiple files, and you can import those files
+    as you see fit.
+    
+    For server side we make use of COMMONJS type of module system.
+    For React we make use of ES2015 type of module system.
+    
+Q) How to use route handlers in Express?
+    By using app.get('/') syntax, we can create route handlers.
+    For C9, try running it on port 8080 instead of 5000.
