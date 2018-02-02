@@ -1,0 +1,27 @@
+9) Relationship between Node and Express.
+================================================================================
+
+Q) How to start the project?
+    Use the command `npm init`. 
+    To install express type `npm install --save express`
+
+Q) What is node?
+    Its a javascript runtime used to execute code outside of the browser.
+
+Q) What is express?
+    Library that runs in the Node runtime. Has helpers to make dealing with HTTP
+    traffice easier.
+
+Q) Explain the relation between node and express?
+    Node listens on some port to receive all incoming HTTP requests on that port.
+    Whenever a request is received by node, it hands off that request to Express.
+    
+    Express will look at the request, and decides which route handler to use.
+    The response from route handler is handed over to Node, and node hands off
+    the response to a client who had originally requested.
+    
+    For diagram, see the Book Notes.
+    
+================================================================================
+10) Generating Express Apps
+================================================================================
