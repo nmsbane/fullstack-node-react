@@ -43,3 +43,35 @@ Q) Module system in express?
 Q) How to use route handlers in Express?
     By using app.get('/') syntax, we can create route handlers.
     For C9, try running it on port 8080 instead of 5000.
+    
+================================================================================
+11) Express Route Handlers
+================================================================================
+Q) app.listen() 
+    Even though it looks like express is calling .listen(), behind the scenes
+    node listens on the specified port, and any incoming requests will be given
+    to the express.
+
+================================================================================
+12) Heroku Deployment
+================================================================================
+Q) What is port binding?
+    Heroku after hosting our code, will decide which port should be open for 
+    incoming requests. So it is untill runtime we cant decide on which port to
+    use. 
+    
+    So to make this happen, we make use of process.env.PORT. 
+    
+    Dynamic port binding: Heroku tells us which port our app will use, so we 
+    need to make sure we listen to the port they tell us.
+    
+Q) Explain the use of "engines" inside package.json file ?
+    For heroku, we need to specify what version of node to use. Inorder to tell
+    heroku we add "engines" property inside package.json file.
+
+Q) How to tell heroku to start our application i.e, about start script?
+    Inside the package.json file, heroku looks for "start" inside "scripts"
+    The "start" should have the command to run our node code like "node index.js"
+
+    Heroku looks up in package.json file, for which runtime to use, which 
+    dependencies to install and how to start the application. 
