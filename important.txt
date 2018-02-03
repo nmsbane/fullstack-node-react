@@ -75,3 +75,12 @@ Q) How to tell heroku to start our application i.e, about start script?
 
     Heroku looks up in package.json file, for which runtime to use, which 
     dependencies to install and how to start the application. 
+    
+================================================================================
+14) Verifying Heroku deployment
+================================================================================
+heroku login
+heroku create - to create a heroku app. 
+git remote add heroku <git url>
+git push heroku master - to push the code to heroku branch
+heroku logs  - to see the list of logs.
