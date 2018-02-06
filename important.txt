@@ -80,7 +80,39 @@ Q) How to tell heroku to start our application i.e, about start script?
 14) Verifying Heroku deployment
 ================================================================================
 heroku login
-heroku create - to create a heroku app. 
+heroku create - to create a heroku app. ( this will give git url )
 git remote add heroku <git url>
 git push heroku master - to push the code to heroku branch
 heroku logs  - to see the list of logs.
+
+================================================================================
+17) The oAuth flow
+================================================================================
+OAuth flow diagram see the notes.
+
+Learnt some important stuff for google oAuth flow.
+
+================================================================================
+18) Overview of passportjs
+================================================================================
+PassportJS helps us in automating oAuth process, but two main pain points are
+
+passportjs requires the developer to add some logic at some specified location.
+( which may be weird for most users ).
+
+Also, to work with passport, we need to install atleast 2 packages. 
+passport and passport-strategy.
+
+For explanation of these, see the Notes. 
+
+================================================================================
+19) Setup passport
+================================================================================
+We require two libraries, passpot and google oauth strategy.
+
+The statement passport.use(new GoogleOAuthStrategy())
+tells the passport, how to make use of specific oauth strategy.
+
+In short, passport knows how to authenticate users, but it doesn't know how
+to authenticate users using google oauth service. So we write the above 
+statement to make use of google oauth service for authenticating users.
