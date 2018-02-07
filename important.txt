@@ -116,3 +116,11 @@ tells the passport, how to make use of specific oauth strategy.
 In short, passport knows how to authenticate users, but it doesn't know how
 to authenticate users using google oauth service. So we write the above 
 statement to make use of google oauth service for authenticating users.
+
+================================================================================
+21) Securing APIs
+================================================================================
+We have to take steps not to store API keys on git.
+One such strategy is, create a file called 'keys.js' in a folder 'config'.
+
+Put all the API keys there and add, 'keys.js' file to .gitignore.
