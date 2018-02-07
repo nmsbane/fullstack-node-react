@@ -124,3 +124,48 @@ We have to take steps not to store API keys on git.
 One such strategy is, create a file called 'keys.js' in a folder 'config'.
 
 Put all the API keys there and add, 'keys.js' file to .gitignore.
+
+================================================================================
+22) Google Strategy Options
+================================================================================
+The third option in new GoogleOAuthStrategy({}, () => {}) object is the, callbackURL
+route that users are sent to after they grant permissions.
+
+For example:
+    new GoogleOAuthStrategy({
+        clientID: <client_id>,
+        clientSecret: <client_secret>,
+        callbackURL: <callback_url>
+    }, (accessToken) => {})
+    
+================================================================================
+23) Testing oAuth
+================================================================================
+Whenever user comes to /auth/google route, we want to kick them to passport flow.
+We do it as a second argument to /auth/google, like
+passport.authenticate('google', {
+    scope: [] // specifies what properties we want to have access to inside 
+              // the profile.
+});
+
+Meaning of passport.authenticate('google')
+    It means that hey passport, whenever you are authenticating with passport,
+    if you see a string 'google', then use new GoogleOAuthStrategy object.
+    
+
+================================================================================
+24) Importance of redirect_uri
+================================================================================
+With the above configuration if we try to test oAuth flow, then we are getting
+redirect_uri mismatch.
+
+For security reasons, the redirctURL that we gave as part of passport configuration
+must match with the redirectURl when initialzing oAuth keys on google plus.
+
+Since when setting up keys, we gave /* for redirctURL, google is throwing an
+error. 
+
+So to correct it go to console.developers.google.com and change the callbackURL.
+
+    
+    
