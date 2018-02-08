@@ -167,5 +167,45 @@ error.
 
 So to correct it go to console.developers.google.com and change the callbackURL.
 
-    
+
+================================================================================
+25) OAuth callbacks
+================================================================================
+
+After updating the callbackURL in google oauth application, we are now redirected
+to /auth/google/callback url, 
+
+We created a route to listen for that URL, and when ever it receives request, 
+we tell passport to get the user with passport.authenticate('google')
+
+but till now we did not tell passport to do something with the user, thats why it
+hangs. 
+
+When this entire passport flow is done, the console.log(accessToken) is executed,
+when the passport correctly gets the user based on the token.
+
+so, that means, we got the code from google and from the local server we 
+exchanged the code for the user profile. 
+
+================================================================================
+26) Access token and refreshToken
+================================================================================
+AccessToken is useful when we are doing something on behalf of user, like 
+sending and reading emails.
+
+AccessToken is for short period only, so it will expire after some time.
+
+For this case, we make use of refreshToken.
+
+We are also passed the user profile as well.
+
+At this this means that the OAuth flow is done and we are given user profile.
+
+
+================================================================================
+27) NodeMon and package.json file script
+================================================================================
+We can add our own custom scripts inside package.json file. Under "script" 
+property we write, "dev": "nodemon index.js", and from command line we type 
+'npm run dev'.
     
