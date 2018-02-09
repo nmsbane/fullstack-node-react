@@ -208,4 +208,21 @@ At this this means that the OAuth flow is done and we are given user profile.
 We can add our own custom scripts inside package.json file. Under "script" 
 property we write, "dev": "nodemon index.js", and from command line we type 
 'npm run dev'.
-    
+
+
+================================================================================
+28) Server structure refactor
+================================================================================
+Express does not enforce any code structure for organizing code, but the common
+pattern is to use, config, routes, and services folder. See the notes for 
+diagram.
+
+If you want a module to just run, ( which does not export any object or function )
+you can just write require('./services/passport');
+
+In our example, when defining authRoute.js file, we wrote, 
+module.exports = (app) => {
+}, 
+so when we do require('authRoute'), we get function, and we are calling the 
+returned function with app object, like this require("./routes/authRoutes")(app);
+
