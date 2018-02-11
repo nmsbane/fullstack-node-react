@@ -199,7 +199,7 @@ For this case, we make use of refreshToken.
 
 We are also passed the user profile as well.
 
-At this this means that the OAuth flow is done and we are given user profile.
+At this means that the OAuth flow is done and we are given user profile.
 
 
 ================================================================================
@@ -225,4 +225,28 @@ module.exports = (app) => {
 }, 
 so when we do require('authRoute'), we get function, and we are calling the 
 returned function with app object, like this require("./routes/authRoutes")(app);
+
+================================================================================
+29) Theory of authentication
+================================================================================
+HTTP is a stateless protocol, i.e, state wont be persisted between requests.
+For authentication, we make use of concept of cookie,
+For flow chart of how cookie is used, see Notes.
+
+For a flow chart of how the process works with mongodb see the diagram of notes.
+
+
+================================================================================
+32) MongoDB setup
+================================================================================
+We make use of database as a service provider mLab. And we make use of mongoose.js
+to interact with the mongodb.
+
+DB name is 'emaily-dev-nmsbane', and for username and password to connect to 
+db is in the notes.
+
+For a diagram of it see the notes. 
+
+
+
 
