@@ -247,6 +247,12 @@ db is in the notes.
 
 For a diagram of it see the notes. 
 
+================================================================================
+33) Connecting mongoose to mongodb
+================================================================================
+We connect to remote mlab database using mongoose.connect() statement.
+We securely store the mongodbURI inside the keys.js file inside the config 
+directory.
 
 
 
