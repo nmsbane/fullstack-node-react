@@ -254,5 +254,112 @@ We connect to remote mlab database using mongoose.connect() statement.
 We securely store the mongodbURI inside the keys.js file inside the config 
 directory.
 
+================================================================================
+34) Why do we need mongodb?
+================================================================================
+Whenever user signups, passport will reply back with the user's profile inforamtion.
+We make use of 'id' inside the returned google response, to store the user in the 
+mongodb.
 
+When the same user logins with the same id, then we can conclude that, the visitor
+has been before, and put the user id in the 'set-cookie' header .
 
+To make use of cookies we need mongodb to store the user who already signed up.
+
+For more information see the notes. ( with the flowchart ).
+
+================================================================================
+35) Mongoose Model class
+================================================================================
+Even though in mongodb, you can mix and match properties as you see fit, but 
+with mongooose we define a schema before hand.
+
+For defining schema we use mongoose.Schema. Also, in ES6 const {Schema} = mongoose
+is shorthand for getting const Schema = mongoose.Schema.
+
+Creating a file is one step and "requiring" it is another important step.
+Eventhough you create a file, but you dont require it, has no meaning at the end.
+
+================================================================================
+36) Saving model instances
+================================================================================
+One important thing to remember is 
+===> The order in which we write "import" statements is important.
+i.e, 
+    if we write require('./services/passport'); require('./models/User');
+    then it will throw schema error, because, passport.js makes use of User model
+    which is not yet defined. It will be defined after executing require('./services/passport');
+    
+Also, for model files ( i.e defined inside models directory ) we dont write 
+export statements. Because, mongoose gets confused if a file is required more 
+than once. 
+
+Inorder to avoid it, we make use of mongoose.model('users'), to get the required
+model.
+
+================================================================================
+37) Mongoose queries
+================================================================================
+We make use of User.findOne( <filter_object> ). 
+Which will find a single user which matches the <filter_object>.
+
+One important thing is that, all mongoose queries return promise as output,
+so we should listen for User.findOn(<filter_object>).then().
+
+================================================================================
+38) Passport Callbacks
+================================================================================
+After getting the profile, accessToken, we can call done() ( passed by passport )
+
+done() expects two parameters, 
+1st parameter is "error" object, 
+2nd parameter is the user record. 
+
+in done(null, existingUser) we mean that there are no errors, we are happy 
+and second parameter is existingUser.
+
+================================================================================
+39) Encoding users
+================================================================================
+Passport, after getting the user profile, will call serializeUser() on User 
+model, to generate a unique token. 
+
+Passport will take care of setting this unique token inside set-cookie header.
+
+On subsequent requests from the same browser, that same token is given to passport,
+which will deserialize the user from the token.
+
+For a flowchart see the notes.
+
+Also, for serializeUser(), we add it as property of passport, passing a callback
+which will run when the user is about to get serialized, like this,
+passport.serializeUser(user, done), where user is passed from done(err, existingUser).
+
+IMPORTANT ==> user.id is shorthand for "_id": { "_oid": ''}, created by mongo 
+
+================================================================================
+40) Deserialize users
+================================================================================
+After getting the user.id from cookie, passport needs the exact user object.
+Which is done by calling passport.deserialize
+
+================================================================================
+41) Enabling cookies
+================================================================================
+After writing serializeUser and deserializeUser in passport, we need to tell 
+passport to use cookies as authentication. 
+
+Passport is very generic, you can use it for JWT as well, so we need to tell 
+passport to use cookies to authenticate. 
+
+Out of Box, express, does not aware of cookies, so we need to install 
+cookie-session, to make express cookie aware. 
+
+cookieSession function, requires an object, with the following parameters,
+maxAge and keys.
+
+Remember 'keys' is an array.
+
+To tell passport to make use of cookie, write these statements,
+app.use(passport.initialize()) // in index.js file.
+app.use(passport.session()) // in index.js file.
