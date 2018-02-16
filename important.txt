@@ -363,3 +363,13 @@ Remember 'keys' is an array.
 To tell passport to make use of cookie, write these statements,
 app.use(passport.initialize()) // in index.js file.
 app.use(passport.session()) // in index.js file.
+
+================================================================================
+43) Logging out users
+================================================================================
+req.logout() is automatically attached by passport, whenever user logsin.
+req.user contains the user object. 
+
+It performs logout(), by taking the cookie and removing id from it. 
+
+Instant we call logout(), req.user is destroyed. 
