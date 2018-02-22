@@ -64,4 +64,4 @@ typings/
 .next
 
 # configuration keys
-keys.js
+dev.js

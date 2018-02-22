@@ -373,3 +373,38 @@ req.user contains the user object.
 It performs logout(), by taking the cookie and removing id from it. 
 
 Instant we call logout(), req.user is destroyed. 
+
+================================================================================
+44) Deeper dive
+================================================================================
+Each app.use are wiring up the app, with middlewares.
+
+Middlewares are small functions, that can be used to modify an incoming request 
+for our app before they are sent out for route handlers. 
+
+i.e, middlewares are about doing preprocessing before being sent off to 
+route handlers. 
+
+cookie-session vs express-session:
+    In cookie-session, the entire session information is stored inside.
+    While in express-session, a reference is stored inside the cookie, so with
+    express-session we can store more information about the session on the server
+    using a different store for just storing data, like mongodb etc,
+    
+For diagram see notes. 
+
+================================================================================
+47) Determining environment
+================================================================================
+    We determine environment using the Environment variable process.env.NODE_ENV
+    which will be automatically set up by heroku, just like process.env.PORT.
+    
+    On heroku process.env.NODE_ENV is set equal to 'production'.
+    On our local machines, process.env.NODE_ENV is set to undefined.
+    
+    Using the statement, moduel.exports = require('./keys.js'), we are requiring 
+    the file and also exporting the file. 
+    
+    DO commit environment variables files. 
+    
+    
