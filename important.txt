@@ -407,4 +407,48 @@ For diagram see notes.
     
     DO commit environment variables files. 
     
+================================================================================
+50) Fixing proxy issues
+================================================================================
+    When googleStrategy goes through any proxy, then it doesn't use https, it just
+    uses http.
     
+    Inorder to tell googleStrategy, that its okay to trust any proxies, use,
+    proxy: true property.
+    
+    Since heroku is hosted on AWS, there is a heroku proxy, and all our sites, 
+    sit behind the proxy.
+    
+    Since the user callback url passes through proxy, googleStrategy, defaults to 
+    using http, instead of https. 
+    
+    For a flow chart see the notes. 
+    
+================================================================================
+51) Running the client and server
+================================================================================
+    We make use of a package called concurrently which is used to run frontend
+    server and backend server at the same time.
+    
+    The command npm run start --prefix client, will tell to run the npm command
+    within the client directory.
+    
+    We make use of concurrently as follows.
+    "dev": "concurrently \"npm run server\" \"npm run client\"
+    
+
+================================================================================
+54) Routing stumbling block
+================================================================================
+    Seemlessly communicating between client side server ( react server ) and 
+    nodejs server.
+    
+    We make use of 
+    "proxy": {
+        "/auth/google": {
+        "target": "https://fullstack-node-react-nmsbane.c9users.io:8081/"
+        }
+     },
+     
+     inside clients package.json file
+  

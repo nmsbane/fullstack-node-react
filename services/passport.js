@@ -18,6 +18,7 @@ passport.deserializeUser((id, done) => {
     });
 });
 
+// you can use proxy:true, for bypassing proxy
 passport.use(new GoogleOAuthStrategy({
     clientID: keys.googleClientID,
     clientSecret: keys.googleClientSecret,

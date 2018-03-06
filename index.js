@@ -23,6 +23,6 @@ app.use(passport.session());
 
 require("./routes/authRoutes")(app);
 
-const PORT = process.env.PORT || 8080;
+const PORT = 8081 || process.env.PORT;
 
 app.listen(PORT);
